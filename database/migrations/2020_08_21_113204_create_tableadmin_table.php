@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFoundModelsTable extends Migration
+class CreateTableadminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateFoundModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('found_models', function (Blueprint $table) {
+        Schema::create('tableadmin', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('login_key');
+            $table->timestamp('login_at');
+            $table->string('name');
+            $table->string('password');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateFoundModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('found_models');
+        Schema::dropIfExists('tableadmin');
     }
 }

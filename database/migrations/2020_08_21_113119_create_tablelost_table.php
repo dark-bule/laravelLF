@@ -14,7 +14,16 @@ class CreateTablelostTable extends Migration
     public function up()
     {
         Schema::create('tablelost', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('lost_id');
+            $table->string('lost_name');
+            $table->string('lost_time');
+            $table->string('lost_place');
+            $table->string('lost_detail');
+            $table->string('lost_img');
+            $table->string('lost_person');
+            $table->string('lost_phone');
+            $table->string('lost_status');
+            $table->date('created_at');
             $table->timestamps();
         });
     }

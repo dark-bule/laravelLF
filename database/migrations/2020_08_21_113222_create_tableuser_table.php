@@ -15,7 +15,11 @@ class CreateTableuserTable extends Migration
     {
         Schema::create('tableuser', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('username');
+            $table->string('password');
+            $table->integer('isadmin');
+            $table->string('picture');
+            $table->timestamp('creat_at');
         });
     }
 
