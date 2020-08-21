@@ -44,10 +44,11 @@ Route::post('lf/searchdata/{method}','Api\LostFoundController@searchData');//查
 
 Route::get('lf/getdata/{method}/','Api\LostFoundController@getData');//获取数据
 
-Route::post('lf/login/{login_key?}', 'Api\LostFoundController@login');//登录
+Route::post('lf/login', 'Api\LostFoundController@login');//登录
 
-Route::post('lf/loginadmin/{loginadmin_key?}', 'Api\LostFoundController@loginadmin')->middleware('isadmin');//管理员登录 ->middleware('isadmin')
+Route::post('lf/loginadmin', 'Api\LostFoundController@loginadmin')->middleware('isadmin');//管理员登录 ->middleware('isadmin')
 
-Route::post('lf/register/{register_key?}', 'Api\LostFoundController@register');//注册
+Route::post('lf/register', 'Api\LostFoundController@register');//注册
+Route::post('lf/registeradmin', 'Api\LostFoundController@registeradmin');//管理员注册
 
 Route::post('lf/updatestatus/{method}','Api\LostFoundController@updateStatus');//修改物品状态码

@@ -377,7 +377,7 @@ class LostFoundController extends Controller
 
 
     //管理员登陆
-    public function loginadmin(Request $Request, $login_key = null)
+    public function loginadmin(Request $Request)
     {
         if (!isset($Request['username']) || (!isset($Request['password']))) {
             return response()->json([
@@ -423,7 +423,7 @@ class LostFoundController extends Controller
     }
 
     // 登陆界面
-    public function login(Request $Request, $login_key = null)
+    public function login(Request $Request)
     {
         if (!isset($Request['username']) || (!isset($Request['password']))) {
             return response()->json([
@@ -437,7 +437,7 @@ class LostFoundController extends Controller
         $isAdmin = DB::table('tableuser')->where("username", [$username])->where("password", $password)->value('isadmin');
         $picture = DB::table('tableuser')->where("username", [$username])->where("password", $password)->value('picture');
         $created_at = DB::table('tableuser')->where("username", [$username])->where("password", $password)->value('creat_at');
-        var_dump($isAdmin);
+        // var_dump($isAdmin);
         if (!$res) {
             return response()->json([
                 'status' => 'error',
@@ -457,7 +457,7 @@ class LostFoundController extends Controller
     }
 
     //注册
-    public function register(Request $Request, $register_key = null)
+    public function register(Request $Request)
     {
         $username = $Request->input('username');
         $password = $Request->input('password');
@@ -497,4 +497,44 @@ class LostFoundController extends Controller
 
     }
 
+//管理员注册
+    public function registeradmin(Request $Request)
+    {
+        $username = $Request->input('username');
+        $password = $Request->input('password');
+        $isadmin = 1;//表示管理员
+        if ($Request->input('picture')) {//存在图片
+        // $file = $Request->file('picture');
+        // var_dump($file);
+            $file = $Request->input('picture');
+        // var_dump($Request->input('picture'));
+        // break;
+        $path = UploadUtils::getUploadPath();//获取保存的文件路径 
+        Image::make($file)->resize(200, 200)->insert('images/watermark.png', 'bottom-right', 15, 10)->save($path);//保存 env('THUMB_WIDTH'), env('THUMB_HEIGHT')   images/1.png  $file
+        // $picture = isset($Request['picture']) ? $Request['picture'] : 0;
+        }
+        $insertResult = DB::table('tableuser')->insert(
+                [
+                    'username' => $username,
+                    'password' => $password,
+                    'picture' => $path,
+                    'isadmin' => $isadmin,
+                    'creat_at' => date(now()),
+                ]
+            );
+
+        if ($insertResult) {
+            return response()->json([
+                'status' => 'ok',
+                'msg' => '注册成功'
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => '注册失败'
+            ], 200);
+        }
+       
+
+    }
 }
