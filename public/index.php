@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');//跨域请求
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

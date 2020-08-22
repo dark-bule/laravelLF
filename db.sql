@@ -10,25 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-08-21 10:25:49
+Date: 2020-08-21 20:15:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for `migrations`
--- ----------------------------
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of migrations
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for `tableadmin`
@@ -46,7 +31,7 @@ CREATE TABLE `tableadmin` (
 -- ----------------------------
 -- Records of tableadmin
 -- ----------------------------
-INSERT INTO `tableadmin` VALUES ('1', 'bP2r60Th', '2020-08-08 07:09:07', '1号管理者', '');
+INSERT INTO `tableadmin` VALUES ('1', 'C6O1zA8s', '2020-08-21 07:47:17', '1号管理者', '');
 INSERT INTO `tableadmin` VALUES ('2', '85lqt4s2', '2020-08-07 13:58:25', '1号访问者', '');
 
 -- ----------------------------
@@ -94,7 +79,7 @@ CREATE TABLE `tablelost` (
   `found_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`lost_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tablelost
@@ -106,6 +91,8 @@ INSERT INTO `tablelost` VALUES ('8', '水杯', '8.8中午', '地下室12', 'shub
 INSERT INTO `tablelost` VALUES ('5', '水杯', '8.8中午', '停车场', 'shubei', '20200808/ZQGoY31NT5.jpg', '小红', '19811732620', '1', '2020-08-08', null, null);
 INSERT INTO `tablelost` VALUES ('6', '水杯', '8.8中午', '地下室', 'shubei，bule', '20200808/W4q0S1CUXu.jpg', 'Mike', '19811732620', '1', '2020-08-08', null, null);
 INSERT INTO `tablelost` VALUES ('7', '水杯', '8.8中午', '地下室12', 'shubei，red', '20200808/V1Uz8ZAhlb.jpg', 'Alen', '19811732620', '1', '2020-08-08', null, null);
+INSERT INTO `tablelost` VALUES ('9', '水杯', '8.8中午', '地下室12', 'shubei，red', '20200821/SCQzBOjoEU.jpg', 'Alen', '19811732620', '1', '2020-08-21', null, null);
+INSERT INTO `tablelost` VALUES ('10', '水杯', '8.8中午', '地下室12', 'shubei，red', '20200821/CFjLS62951.jpg', 'Alen', '19811732620', '1', '2020-08-21', null, null);
 
 -- ----------------------------
 -- Table structure for `tableuser`
@@ -119,7 +106,7 @@ CREATE TABLE `tableuser` (
   `picture` varchar(255) CHARACTER SET utf8 DEFAULT '',
   `creat_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tableuser
@@ -133,3 +120,4 @@ INSERT INTO `tableuser` VALUES ('6', '5test', '567', '0', '20200808/EMRxWcX5vO.j
 INSERT INTO `tableuser` VALUES ('7', '5test', '567', '0', '20200808/UIAJEsTeFd.jpg', '2020-08-08 06:26:00');
 INSERT INTO `tableuser` VALUES ('8', '5test', '567', '0', '20200808/SVOn9YFWu0.jpg', '2020-08-08 06:32:53');
 INSERT INTO `tableuser` VALUES ('9', '6号测试者', '123123', '0', '20200808/EecmBgdUVa.jpg', '2020-08-08 06:33:42');
+INSERT INTO `tableuser` VALUES ('10', '2号管理者', '123123', '1', '20200821/K6yJEA1i3P.jpg', '2020-08-21 06:36:41');
